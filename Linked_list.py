@@ -60,3 +60,10 @@ class Linked_list:
 		prev.next = tepm.next
 		temp = None
 			prev = temp
+	def print_list(self):
+		temp = self.head
+		list_data = []
+		while temp:
+			list_data.appent(temp.data)
+			temp = temp.next
+		print(list_data)
