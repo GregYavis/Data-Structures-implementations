@@ -41,3 +41,56 @@ class Bin_tree:
 		else:
 		     print('Given key not in tree')
 		     
+	def clear_tree(self):
+		self.root = None
+	
+	def sort(self):
+		nodes = self._sort(self.root)
+		self.clear_tree()
+		for node in nodes:
+		     self.add(node)
+		return
+		     
+	def _sort(self, node):
+		if node.left:
+		     node.left = self._sort(node.left)
+		else:
+		     node.left = []
+		if node.right:
+		     node.right = self._sort(node.right)
+		else:
+		     node.right = []
+		return node.left + [node.data] + node.right
+	
+	def print_levels(self, root):
+		queue = []
+		def bfs(node, lvl):
+		     if node is None:
+		     	return
+		     if lvl >= len(queue):
+		     	queue.append([node.data])
+		     else:
+		     	queue[lvl].append([node.data])
+		     lvl += 1
+		     bfs(node.left, lvl)
+		     bfs(node.right, lvl)
+		bfs(root, lvl)
+		print(queue)
+		     
+	def inorder_print(self, root):
+		if root:
+		     self.inorder_print(root.left):
+		     print(root.data)
+		     self.inorder_print(root.right)
+		     
+	def postorder_print(self, root):
+		if root:
+		     self.postorder_print(root.left)
+		     self.postorder.print(root.right)
+		     print(root.data)
+		     
+	def preorder_print(self, root):
+		if root:
+		     print(root.data)
+		     self.preorder_print(root.left)
+		     self.preorder_print(root.right)
