@@ -40,7 +40,18 @@ class Doubly_list:
       new_node.prev = prev
       if new_node.next is not None:
         new_node.next.prev = new.node
-        
+    
+    def reverse(self):
+      temp = None
+      current = self.head
+      while current:
+        temp = current.prev
+        current.prev = current.next
+        current.next = temp
+        current = current.prev
+        if temp:
+          self.head = temp.prev
+          
     def delete_key(self, key):
       current = self.head
       while current:
