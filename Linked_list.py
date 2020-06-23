@@ -60,6 +60,17 @@ class Linked_list:
 		prev.next = tepm.next
 		temp = None
 			prev = temp
+				
+	def reverse(self):
+		prev = None
+		current = self.head
+		while current:
+			next = current.next
+			current.next = prev
+			prev = current
+			current = next
+		self.head = prev
+				
 	def print_list(self):
 		temp = self.head
 		list_data = []
